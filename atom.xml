@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Vince&#39;s Blog</title>
+  <subtitle>还差的远呢</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-08-02T12:59:36.605Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>毛靖文</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写在最开始</title>
+    <link href="http://yoursite.com/2017/07/06/firstblog/"/>
+    <id>http://yoursite.com/2017/07/06/firstblog/</id>
+    <published>2017-07-06T13:01:40.439Z</published>
+    <updated>2017-08-02T12:59:36.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。<br><a id="more"></a></p>
+<h2 id="about-me"><a href="#about-me" class="headerlink" title="about me"></a>about me</h2><p>　　萨芬萨科夫哈hi哦饿还无法离开是否会脸红的宽带乱收费健康</p>
+<h2 id="about-blog"><a href="#about-blog" class="headerlink" title="about blog"></a>about blog</h2><p>　　说起来，想要有一个自己的博客已经很久了，却发现总是有各种事情要忙，导致把这个博客的搭建一直拖到了这个暑假。<br>　　一开始呢，是想着自己写代码实现一个博客的，为此决定去学了JavaScript（放弃了PHP和Java），同样，一开始还是很认真的，从JS的基础语法，到ES6标准，对异步操作纠结了很久，前端选择了Vue框架，后端也学了nodeJS。然而学了一阵以后，发现好像事情没有那么简单，无论是Vue还是node，真要学好的话，这个坑还是有点深。速度</p>
+<h2 id="about-future"><a href="#about-future" class="headerlink" title="about future"></a>about future</h2><p>　　曾经花了不少精力在ACM的学习与参赛上，然而也没能获得令自己满意的成果，在Web方面也学了一阵，发现和一心做Web的同学相比还是欠缺不少，还是没能说服自己就踏实地做Web开发就好了，可能是脑子里还是有一些不切实际的幻想吧，于是在近期又参加了数学建模的比赛，说不好又会翻车。<br>　　想了想，关于未来，还是决定去学习算法方面的内容，就目前来看，机器学习是比较热门的，虽然也知道所谓热门，是需要很多人来为一时的冲动买单的。不过反正也不是第一次了，想要就去做嘛，大不了过两年从头再来。<br>　　既然已经有了自己的博客，能将之后所学到的内容记录下来，那就日常先来一个flag，希望在以后我能逐个完成自己所定的目标吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="flag" scheme="http://yoursite.com/tags/flag/"/>
+    
+      <category term="开始" scheme="http://yoursite.com/tags/%E5%BC%80%E5%A7%8B/"/>
+    
+  </entry>
+  
+</feed>
