@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>tensorflow学习笔记（一）——安装与配置 | Vince&#39;s Blog | 还差的远呢</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="tensorflow">
+    <meta name="description" content="tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样，第一步要做的就是配环境。">
+<meta name="keywords" content="tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow学习笔记（一）——安装与配置">
+<meta property="og:url" content="https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/index.html">
+<meta property="og:site_name" content="Vince&#39;s Blog">
+<meta property="og:description" content="tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样，第一步要做的就是配环境。">
+<meta property="og:image" content="https://github.com/img/t2.png">
+<meta property="og:updated_time" content="2017-08-17T02:59:50.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tensorflow学习笔记（一）——安装与配置">
+<meta name="twitter:description" content="tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样，第一步要做的就是配环境。">
+<meta name="twitter:image" content="https://github.com/img/t2.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vince&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/drawerCover.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/cover0.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">毛靖文</h5>
+          <a href="mailto:785512526@qq.com" title="785512526@qq.com" class="mail">785512526@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ZT-Vincent" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">tensorflow学习笔记（一）——安装与配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale" style = "padding:0 16px">
+        <h1 class="title" style = "padding-top: 12px; padding-left: 300px;">tensorflow学习笔记（一）——安装与配置</h1>
+        <h5 class="subtitle"style ="font-size: 24px;padding-left: 340px">
+            
+                <time datetime="2017-08-16T14:32:54.000Z" itemprop="datePublished" class="page-time">
+  2017-08-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tensorflow版本详情"><span class="post-toc-number">1.</span> <span class="post-toc-text">tensorflow版本详情</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装所需环境"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装所需环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装（踩坑）详情"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装（踩坑）详情</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试代码</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-tf0"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">tensorflow学习笔记（一）——安装与配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-16 22:32:54" datetime="2017-08-16T14:32:54.000Z"  itemprop="datePublished">2017-08-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样，第一步要做的就是配环境。<br><a id="more"></a></p>
+<h1 id="tensorflow版本详情"><a href="#tensorflow版本详情" class="headerlink" title="tensorflow版本详情"></a>tensorflow版本详情</h1><p>　　<a href="www.tensorflow.org">tensorflow</a>在今年支持windows上的安装使用了，如今最新为1.3版本，可能还不是很通用，更多使用的是1.1和1.2版本，根据官网所说，仅支持python3.5版本，不过我使用的python3.6也安装成功了，应该是3.5以后版本都能用。在windows上使用tensorflow，还分为CPU和GPU两版，GPU需要NVIDIA显卡支持，同时安装也更麻烦，不够考虑到CPU的运算速度，还是决定安装GPU版本。</p>
+<h1 id="安装所需环境"><a href="#安装所需环境" class="headerlink" title="安装所需环境"></a>安装所需环境</h1><p>为成功安装tensorflow的GPU版本，一共需要在电脑安装：</p>
+<ol>
+<li><a href="www.python.org">python3.5</a>或以后版本</li>
+<li>pip3</li>
+<li><a href="http://download.microsoft.com/download/B/4/8/B4870509-05CB-447C-878F-2F80E4CB464C/vs_community.exe" target="_blank" rel="external">VS2015</a>（官网现在没这条，先装了总没错）</li>
+<li><a href="http://pan.baidu.com/s/1slqIVk5" target="_blank" rel="external">CUDA8.0</a></li>
+<li><a href="http://pan.baidu.com/s/1sl2UfSh" target="_blank" rel="external">cuDNNv5.1</a></li>
+</ol>
+<h1 id="安装（踩坑）详情"><a href="#安装（踩坑）详情" class="headerlink" title="安装（踩坑）详情"></a>安装（踩坑）详情</h1><p>以上所需软件也可在官网下载安装，需要注意的有，python安装时需要添加PATH变量以便使用pip快速导入包。然后可使用pip指令快速安装tensorflow库<br><code>pip3 install --upgrade tensorflow-gpu</code><br>虽然不知道为什么，我一开始下载的时候一直报错，可能是网络不稳定吧，总之最后还是能安装的。<br>VS2015在线安装可能会失败，最好先翻墙。<br>主要的困难在于CUDA和cuDNN，CUDA安装完后可在命令行输入指令查看<br><code>nvcc -V</code><br>cuDNN下载后需要将文件添加入PATH环境变量，也可将解压后文件夹中的三个子文件夹中的文件分别复制添加至cuda所安装位置下的文件夹，默认安装路径是：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0，其中对应的bin，include，x64文件夹中。</p>
+<h1 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h1><p>安装完成后可在cmd指令界面打开python，输入以下代码进行测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">a = tf.random_normal((10, 10))</div><div class="line">b = tf.random_normal((10, 5))</div><div class="line">c = tf.matmul(a, b)</div><div class="line">sess = tf.InteractiveSession()</div><div class="line">sess.run(c)</div></pre></td></tr></table></figure></p>
+<p>能跑就基本是安装成功了<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/t2.png" alt="示例结果" title="">
+                </div>
+                <div class="image-caption">示例结果</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-08-17T02:59:50.182Z" itemprop="dateUpdated">2017-08-17 10:59:50</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://github.com/ZT-Vincent/ZT-Vincent.github.io">
+            <img src="/img/cover0.png" alt="毛靖文">
+            毛靖文
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
+
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&title=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&title=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&source=tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/17/tf1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">tensorflow学习笔记（二）——变量与图</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/02/firstblog/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">写在最开始</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>毛靖文 &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&title=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&title=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&source=tensorflow是谷歌所开发的用于深度学习，并完全开源的一个库，我也想通过学习tensorflow来逐渐了解深度学习以及机器学习。和以往学过的内容一样..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（一）——安装与配置》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/16/tf0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACzElEQVR42u3awYobQQwEUP//TzuQU2AzcZXUnWzg9cmsZ+1+Yxg1Jb1e8Xr/XE9/ef+yvl7z9O7smteNhYeHhzfa+tNKNpF88ddPy69M9vN4C/Dw8PCu8fKvmYHz6/P9JAUMDw8P79/yknLy56Nw8nBP9oCHh4f3f/HyMpDnA0nogIeHh/fdeEkYkR+v89i3XRezFjw8PLyY1zbAvsPri/09PDw8vEVXPQ8a2jKwCYuL3eLh4eFd4CXRQFsw8huxGUQoBrPw8PDwjvI2badZS6xtjK1CZDw8PLwLvE2TqX3E542uurLl1+Dh4eGteclGZyHFZtPFWEBb9/Dw8PDWvPxBnz/02+KR961ycF3H8PDw8GJe8m956NAerGeH+CIsxsPDw7vAa1tZ7VhAflPyTxtmLXh4eHhHeXkAsdn6rLXWji/UYQQeHh7eiNcebdvAIo8qZsMKRVqMh4eHt+blo1Ft8chHozb4Dz8PHh4e3gXeJiqdNc+SQ3ZbAKIYBQ8PD+8QLy8Mefu/jWhnI19RGIGHh4d3gZdvLj/CbmKFtjDUPwAeHh7emrePbmdH4bxhlre7HrMWPDw8vKO8NnKdVZv2UD5rzn0YusLDw8M7yssvnY1DzYLds0EwHh4e3ilee5ydbToJdvMYtzhe4+Hh4V3gtZFBHvXOYtn9gR4PDw/vNi95xLehQFsS8s/Mxw7w8PDw/g5vk17Mwtl8EOFYmoKHh4e35s1GBNrA91issGmP4eHh4R3ivcuVZBvtIEJbrlZhBB4eHt6aNzuR5mFEUjzasYAkhsDDw8O7zWuLwanIoA2L88bbhwwYDw8P7xCv/Zo8YmhbX6sKduou4uHh4R3iJeA2FE4Ox3kZWBUGPDw8vGu8/OHebqi9fVE5wcPDw7vGmzW98rZZG1LMYpF6gAAPDw9vxNs0wGYP+tlAQD5kcCCwwMPDw/v9uz8A507kKVuCjJkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

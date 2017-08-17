@@ -13,24 +13,24 @@
     
     
     
-    <title>写在最开始 | Vince&#39;s Blog | 还差的远呢</title>
+    <title>tensorflow学习笔记（二）——变量与图 | Vince&#39;s Blog | 还差的远呢</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="flag">
-    <meta name="description" content="博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。">
-<meta name="keywords" content="flag">
+    <meta name="keywords" content="tensorflow">
+    <meta name="description" content="看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程">
+<meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写在最开始">
-<meta property="og:url" content="https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/index.html">
+<meta property="og:title" content="tensorflow学习笔记（二）——变量与图">
+<meta property="og:url" content="https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/index.html">
 <meta property="og:site_name" content="Vince&#39;s Blog">
-<meta property="og:description" content="博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。">
-<meta property="og:updated_time" content="2017-08-16T14:54:52.560Z">
+<meta property="og:description" content="看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程">
+<meta property="og:updated_time" content="2017-08-17T05:51:21.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写在最开始">
-<meta name="twitter:description" content="博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。">
+<meta name="twitter:title" content="tensorflow学习笔记（二）——变量与图">
+<meta name="twitter:description" content="看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程">
     
         <link rel="alternate" type="application/atom+xml" title="Vince&#39;s Blog" href="/atom.xml">
     
@@ -107,7 +107,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">写在最开始</div>
+        <div class="flex-col header-title ellipsis">tensorflow学习笔记（二）——变量与图</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -129,15 +129,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale" style = "padding:0 16px">
-        <h1 class="title" style = "padding-top: 12px; padding-left: 300px;">写在最开始</h1>
+        <h1 class="title" style = "padding-top: 12px; padding-left: 300px;">tensorflow学习笔记（二）——变量与图</h1>
         <h5 class="subtitle"style ="font-size: 24px;padding-left: 340px">
             
-                <time datetime="2017-08-02T14:56:45.653Z" itemprop="datePublished" class="page-time">
-  2017-08-02
+                <time datetime="2017-08-17T03:18:54.000Z" itemprop="datePublished" class="page-time">
+  2017-08-17
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
             
         </h5>
@@ -154,20 +154,20 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于-我"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于 我</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于-博客"><span class="post-toc-number">2.</span> <span class="post-toc-text">关于 博客</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于-未来"><span class="post-toc-number">3.</span> <span class="post-toc-text">关于 未来</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据类型</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-firstblog"
+<article id="post-tf1"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">写在最开始</h1>
+        <h1 class="post-card-title">tensorflow学习笔记（二）——变量与图</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-08-02 22:56:45" datetime="2017-08-02T14:56:45.653Z"  itemprop="datePublished">2017-08-02</time>
+            <time class="post-time" title="2017-08-17 11:18:54" datetime="2017-08-17T03:18:54.000Z"  itemprop="datePublished">2017-08-17</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/日常/">日常</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
 
 
 
@@ -179,10 +179,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。<br><a id="more"></a></p>
-<h1 id="关于-我"><a href="#关于-我" class="headerlink" title="关于 我"></a>关于 我</h1><p>　　我是一个正在杭州读大学的学生，自认为对编程还算比较有兴趣，最终还是选择了进入计算机专业学习。在学校的这两年，带着美好的幻想去尝试过许多东西，似乎每次在开始的时候还是能有一定的进展，最终却总是不能达到最初想要的结果，可能自己还是太菜了吧。</p>
-<h1 id="关于-博客"><a href="#关于-博客" class="headerlink" title="关于 博客"></a>关于 博客</h1><p>　　说起来，想要有一个自己的博客已经很久了，却发现总是有各种事情要忙，导致把这个博客的搭建一直拖到了这个暑假。<br>　　一开始呢，是想着自己来写代码实现一个博客的，为此决定去学了JavaScript（放弃了PHP和Java），同样，一开始还是很认真的，从JS的基础语法，到ES6标准，对异步操作纠结了很久，前端选择了Vue框架，后端也学了nodeJS。然而学了一阵以后，发现好像事情没有那么简单，无论是Vue还是node，真要学好的话，这个坑还是有点深。预估了下学这些所需的时间，并且面前又出现了别的选项。于是还是放弃了这个想法。<br>　　最终我还是选用了hexo来快速搭建一个博客，按照教程，稍微学下git的用法，还是很快就完成了。这让我不得不说，开源的力量还是很大的。</p>
-<h1 id="关于-未来"><a href="#关于-未来" class="headerlink" title="关于 未来"></a>关于 未来</h1><p>　　曾经花了不少精力在ACM的学习与参赛上，然而也没能获得令自己满意的成果，也参加了创业类的项目，过程与结果也都不尽如人意。有一阵在学Web开发的内容，发现和很早就一心做Web的同学相比还是欠缺不少，还是没能说服自己就踏实地做Web开发就好了，可能是脑子里还是有一些不切实际的幻想吧，于是在近期又参加了数学建模的比赛，虽然说不好又会翻车。<br>　　想了想，关于未来，似乎还是有许多空白的地方，那就慢慢来吧。目前决定去学习算法方面的内容，就目前来看，机器学习还是比较热门的，个人也有些兴趣。虽然也知道，以后可能要为一时的冲动买单。不过反正也不是第一次了，想要就去做嘛，重要的不是能有什么好处或者非要取得什么成就，而是能真正专心的做些东西吧。<br>　　既然已经有了自己的博客，能将之后所学到的内容记录下来，那就日常先来一个flag，希望能时常更博，并且能逐个完成自己所定的目标吧。</p>
+            <p>看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程<br><a id="more"></a></p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">a = tf.random_normal((10, 10))</div><div class="line">b = tf.random_normal((10, 5))</div><div class="line">c = tf.matmul(a, b)</div><div class="line">sess = tf.InteractiveSession()</div><div class="line">sess.run(c)</div></pre></td></tr></table></figure>
 
         </div>
 
@@ -190,7 +188,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-08-16T14:54:52.560Z" itemprop="dateUpdated">2017-08-16 22:54:52</time>
+    Last updated: <time datetime="2017-08-17T05:51:21.550Z" itemprop="dateUpdated">2017-08-17 13:51:21</time>
 </span><br>
 
 
@@ -213,7 +211,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flag/">flag</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
 
 
 
@@ -224,7 +222,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&title=《写在最开始》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&title=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -234,22 +232,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&title=《写在最开始》 — Vince's Blog&source=博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&title=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&source=看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写在最开始》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -269,16 +267,16 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/08/16/tf0/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/16/tf0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">tensorflow学习笔记（一）——安装与配置</h4>
       </a>
     </div>
-  
-
   
 </nav>
 
@@ -370,7 +368,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&title=《写在最开始》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&title=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -380,22 +378,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&title=《写在最开始》 — Vince's Blog&source=博客终于搭建好了，也算是难得完成了一件想要做的事，希望接下来能完成更多的目标吧。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&title=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&source=看了官网的教程，先跑了第一个例程，大概学习了tensorflow的几种数据类型以及程序流程" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《写在最开始》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（二）——变量与图》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/02/firstblog/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/17/tf1/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -406,7 +404,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3a0WrrMBAE0Pz/T7evhTa5M1ptyIXjp0JdW0cFrTyrxyO+vp5cP3+b/9Xr5yR3Xr7w8PDwLg09f/Hvp71+y+87Xz9nMh48PDy8Pd6zAb2+J7n/bKD51PzDgoeHh/cBvGSb2w4x35Tj4eHh/e+8vCTkW+f5dODh4eG9h3cW1LZloN1MvzVrwcPDw1voIn3Ozyv9PTw8PLxxV/0sWj3bUrcRcDRaPDw8vAVe29xKDha0G+L2uEA+Tjw8PLw9XrtMTxr8eYybxxBRmIuHh4e3wEuGMm9xnYWw7ZGvImnGw8PDK3nth/38/jYybovHH98KeHh4eMu8W2Hr5EDVHIyHh4f3Hl67E29D23xabxUqPDw8vA1esmRPGk53W19n/wY8PDy8Dd5G2Nq2zc4KQxF54OHh4S3wkuU+CSnymKONJ5LnPCbVDA8PD6/krQQBA3B+6CoKhfHw8PDeyJtsu/NAIVnokyJUFwY8PDy8I169yJZB8CSQzd/+9Ml4eHh4V3n5sYBbBwjaMCIvUX88Bw8PD2+Bt92Ieme7Kwoj8PDw8C7x2s/7fMubYM4aYIdnyvDw8PDGvHb5vnAqoYyDL2yj8fDw8Ja/0M/C07bM5NPaTvHTrAUPDw/vEu/sEEAbCsx/28Lw8PDwtnl56JAv+m1Ric6F5flK27vDw8PDO+K1EUD++iQUzpf+OnrGw8PDW+OdYfIFfX6Q63A8eHh4eFd5X+WVxBbz3lOyrY/CETw8PLwF3qQAJA+aszemDA8PD2/OO1vo86Ol7UScdfCejgcPDw9vjZcvyvmWN9/+zgOIC/09PDw8vGVeG+BOYov2YCseHh7ep/Fydl4AkvbYYTnBw8PDW+PlTa98EEkJSTblyRQXZ8rw8PDwxryzD/62hZ/HFvkkPm5deHh4eCnvG7OL5CmK88TeAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACyUlEQVR42u3a0W7bMAwF0Pz/T3fAnjasbu8lpS0Djp+K1LF0ZEBUSL5e8fXx80o++fXzjz+upyfn97xuXHh4eHijqT9dX0/iaeCnO5+W5mnh8vk8LgEeHh7eNV4+TDLFNgAkT27vwcPDw3sHXhJOkg09ecLXc8DDw8P7H3ltqiIJEklKAg8PD+99eMlGvzlw56mEWXLkQK4FDw8PL+a1BbB3+PtifQ8PDw9vUVWfFf7bBoIkwAxDCB4eHt4FXp5ynTVLbdoONr1VxfB4eHh4JS/f7tsyWB5O2tRGshy/xT08PDy8o7zZkPmGngNWka2Nfnh4eHgLXnLM3SPbSRdtAUncw8PDwzvKSw7KbUksScjO6lY5ONLj4eHhLXjt1PPSV5tKaMeapZXx8PDw9ry29LU5EG+aDNqyHB4eHt4NXlvcag/BbWI3DxV1fQ8PDw/vMi8/tubNpm2xbdY08MrXEg8PD2/BaxukkifkjQUb/DevCg8PD+8Cb7bpz0pfLbtNQHzzMvDw8PAO8dojcts00C5Q8q1iOfDw8PAu8NrA0B6m2/CQA+rWLjw8PLxDvFPlqM20il6w9hCPh4eHd4F3Nh2QH8Hzpq62meCxpwwPDw/vMi/acONpnU3s1suHh4eHd5Q3a2lKwkCewG3TuMXxGg8PD+8C71SKYV+ymj0/GhEPDw/vKG+Wfm3v2bRwzdoO8PDw8P4Or51KsqHvE7VF78OszoaHh4c3rzFFCdxNwvdAWmFdHsPDw8Pb8z7KK//WqUaE/GBdH6nx8PDwRrwbbU+bYJM3DeDh4eH9W94+JTE7ELfJ4uT9fPI5Hh4e3jVeGwzywdrS1yqC7VcRDw8P7ygv346T77ZpjnZcPDw8vPfhJQfrzUK0YembcIKHh4d3jTcrerUbep6kSMaKwgMeHh7eBd7sF30bHpKExSxpeyVhgYeHh/f5f38A0wsNAXhSF9UAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
