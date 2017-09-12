@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>tensorflow学习笔记（三）——前馈神经网络 | Vince&#39;s Blog | 还差的远呢</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="tensorflow">
+    <meta name="description" content="对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下">
+<meta name="keywords" content="tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow学习笔记（三）——前馈神经网络">
+<meta property="og:url" content="https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/index.html">
+<meta property="og:site_name" content="Vince&#39;s Blog">
+<meta property="og:description" content="对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下">
+<meta property="og:updated_time" content="2017-09-12T06:57:26.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tensorflow学习笔记（三）——前馈神经网络">
+<meta name="twitter:description" content="对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vince&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/drawerCover.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/cover0.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">毛靖文</h5>
+          <a href="mailto:785512526@qq.com" title="785512526@qq.com" class="mail">785512526@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ZT-Vincent" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">tensorflow学习笔记（三）——前馈神经网络</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale" style = "padding:0 16px">
+        <h1 class="title" style = "padding-top: 12px; padding-left: 300px;">tensorflow学习笔记（三）——前馈神经网络</h1>
+        <h5 class="subtitle"style ="font-size: 24px;padding-left: 340px">
+            
+                <time datetime="2017-08-23T11:55:01.000Z" itemprop="datePublished" class="page-time">
+  2017-08-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#神经网络"><span class="post-toc-number">1.</span> <span class="post-toc-text">神经网络</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实现原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#完整代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">完整代码</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-tf2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">tensorflow学习笔记（三）——前馈神经网络</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-23 19:55:01" datetime="2017-08-23T11:55:01.000Z"  itemprop="datePublished">2017-08-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/机器学习/">机器学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下<br><a id="more"></a></p>
+<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>　　神经网络即模仿生物学中的神经细胞进行接受信号，传播信号的过程。对于单个神经细胞，可能有n个输入以及m个输出，但对于复杂的神经网络，有多层神经网络，其中接受原始信号的为输入层，接受来自前面神经元输出的叫做隐藏层，隐藏层可以有多层，最后一层即是输出层。而<a href="https://baike.baidu.com/item/%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/7580523?fr=aladdin" target="_blank" rel="external">前馈神经网络</a>是一种最简单的神经网络，各神经元分层排列。每个神经元只与前一层的神经元相连。接收前一层的输出，并输出给下一层．各层间没有反馈。</p>
+<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p>对于前馈神经网络的实现，利用的是教材中所给的数据input_data，为带有数字的图片。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#可在tensorflow库中导入</div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div></pre></td></tr></table></figure></p>
+<p>神经网络模型的构建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 首先定义设置网络层的函数，输入输出间均为线性关系</div><div class="line">def set_layer(inputs,in_size,out_size,layer_name,activate_function = None):</div><div class="line">    # 权重和偏差量定义</div><div class="line">    W = tf.Variable(tf.random_uniform([in_size, out_size], -1.0, 1.0), name=&quot;W&quot; + layer_name)</div><div class="line">    bias =  tf.Variable(tf.constant(0.1, shape=[out_size]), name=&quot;bias_&quot;+ layer_name)</div><div class="line">    # 线性模型</div><div class="line">    Wx_Plus_b = tf.matmul(inputs, W) + bias</div><div class="line">    # 防止过拟合,keep_prob为每个元素的被保留概率</div><div class="line">    Wx_Plus_b = tf.nn.dropout(Wx_Plus_b, keep_prob)</div><div class="line">    # 激活函数的使用</div><div class="line">    if activate_function is None:</div><div class="line">        outputs = Wx_Plus_b</div><div class="line">    else:</div><div class="line">        outputs = activate_function(Wx_Plus_b)</div><div class="line">    return outputs</div><div class="line"></div><div class="line"># 原始数据占位符</div><div class="line">xs = tf.placeholder(tf.float32, [None, n_input], name=&quot;input&quot;)</div><div class="line">ys = tf.placeholder(tf.float32, [None, n_classes], name=&quot;output&quot;)</div><div class="line">#保留概率</div><div class="line">keep_prob = tf.placeholder(tf.float32)</div><div class="line"></div><div class="line"># 神经网络的构建</div><div class="line">h1 = set_layer(xs, n_input, hidden_units1, &apos;hidden_layer_1&apos;, activate_function=tf.nn.tanh)</div><div class="line">#softmax和tf.nn.tanh为激活函数，都可用</div><div class="line">h2 = set_layer(h1, hidden_units1, hidden_units2, &apos;hidden_layer_2&apos;, activate_function=tf.nn.tanh)</div><div class="line">prediction = set_layer(h2, hidden_units2, n_classes, &apos;prediction_layer&apos;, activate_function=None)</div><div class="line"># 预测输出在用None无激活函数效果较好，也可用tf.nn.softmax，tf.nn.tanh等激活函数</div></pre></td></tr></table></figure></p>
+<p>训练指标的设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction)))</div><div class="line"># 有看到资料说和下面一句意义相同，但实际上无法使用，</div><div class="line"># tf.nn.softmax_cross_entropy_with_logits将预测值转化为总和为一的概率值，并与实际值的计算交叉熵代价函数</div><div class="line"># tf.reduce_mean取均值</div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=ys, logits=prediction))</div><div class="line"># 训练目标为使cross_entropy最小，使用梯度下降法进行训练</div><div class="line">train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(cross_entropy)</div><div class="line">tf.summary.scalar(&apos;loss&apos;, cross_entropy)</div><div class="line"># 准确率</div><div class="line">correct_prediction = tf.equal(tf.argmax(prediction, 1), tf.argmax(ys, 1))</div><div class="line"># 得到true false数据</div><div class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</div><div class="line"># 求均值</div></pre></td></tr></table></figure></p>
+<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">import tensorflow as tf</div><div class="line">from tensorflow.examples.tutorials.mnist import input_data</div><div class="line">import time</div><div class="line">mnist = input_data.read_data_sets(&apos;MNIST_data&apos;, one_hot=True)</div><div class="line"></div><div class="line">def set_layer(inputs,in_size,out_size,layer_name,activate_function = None):</div><div class="line">    W = tf.Variable(tf.random_uniform([in_size, out_size], -1.0, 1.0), name=&quot;W&quot; + layer_name)</div><div class="line">    bias =  tf.Variable(tf.constant(0.1, shape=[out_size]), name=&quot;bias_&quot;+ layer_name)</div><div class="line">    Wx_Plus_b = tf.matmul(inputs, W) + bias</div><div class="line">    Wx_Plus_b = tf.nn.dropout(Wx_Plus_b, keep_prob)#防止过拟合,keep_prob为每个元素的被保留概率</div><div class="line">    if activate_function is None:</div><div class="line">        outputs = Wx_Plus_b</div><div class="line">    else:</div><div class="line">        outputs = activate_function(Wx_Plus_b)</div><div class="line">    return outputs</div><div class="line"></div><div class="line">## 参数设定</div><div class="line">hidden_layers = 1</div><div class="line">hidden_units1 = 200</div><div class="line">hidden_units2 = 50</div><div class="line">n_input = 784</div><div class="line">n_classes = 10</div><div class="line">learning_rate = 0.8</div><div class="line">## 神经网络的构建</div><div class="line">xs = tf.placeholder(tf.float32, [None, n_input], name=&quot;input&quot;)</div><div class="line">ys = tf.placeholder(tf.float32, [None, n_classes], name=&quot;output&quot;)</div><div class="line">keep_prob = tf.placeholder(tf.float32)</div><div class="line"></div><div class="line">h1 = set_layer(xs, n_input, hidden_units1, &apos;hidden_layer_1&apos;, activate_function=tf.nn.tanh)</div><div class="line">h2 = set_layer(h1, hidden_units1, hidden_units2, &apos;hidden_layer_2&apos;, activate_function=tf.nn.tanh)</div><div class="line">prediction = set_layer(h2, hidden_units2, n_classes, &apos;prediction_layer&apos;, activate_function=None)</div><div class="line"></div><div class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=ys, logits=prediction))</div><div class="line">train_op = tf.train.GradientDescentOptimizer(learning_rate).minimize(cross_entropy)</div><div class="line">tf.summary.scalar(&apos;loss&apos;, cross_entropy)</div><div class="line">## 训练结果准确性</div><div class="line">correct_prediction = tf.equal(tf.argmax(prediction, 1), tf.argmax(ys, 1))</div><div class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</div><div class="line"></div><div class="line">## 训练</div><div class="line">init = tf.initialize_all_variables()</div><div class="line">n_epochs = 40</div><div class="line">batch_size = 100</div><div class="line">with tf.Session() as sess:</div><div class="line">    st = time.time()</div><div class="line">    write = tf.summary.FileWriter(&apos;logs/&apos;, sess.graph)</div><div class="line">    sess.run(init)</div><div class="line">    for epoch in range(n_epochs):</div><div class="line">        n_batch = int(mnist.train.num_examples / batch_size)</div><div class="line">        for i in range(n_batch):</div><div class="line">            batch_xs, batch_ys = mnist.train.next_batch(batch_size)</div><div class="line">            sess.run(train_op, feed_dict=&#123;xs: batch_xs, ys: batch_ys, keep_prob:0.75&#125;)</div><div class="line">        print (&apos;epoch&apos;, epoch, &apos;accuracy:&apos;, sess.run(accuracy, feed_dict=&#123;keep_prob:1.0, xs: mnist.test.images, ys: mnist.test.labels&#125;))</div><div class="line">    end = time.time()</div><div class="line">    print (&apos;*&apos; * 30)</div><div class="line">    print (&apos;training finish. cost time:&apos;, int(end-st) , &apos;seconds; accuracy:&apos;, sess.run(accuracy, feed_dict=&#123;keep_prob:1.0, xs: mnist.test.images, ys: mnist.test.labels&#125;))</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2017-09-12T06:57:26.029Z" itemprop="dateUpdated">2017-09-12 14:57:26</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://github.com/ZT-Vincent/ZT-Vincent.github.io">
+            <img src="/img/cover0.png" alt="毛靖文">
+            毛靖文
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
+
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&title=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&title=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&source=对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/22/spider1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">爬虫入门（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>毛靖文 &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&title=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&pic=https://github.com/ZT-Vincent/ZT-Vincent.github.io/img/cover0.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&title=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&source=对于机器学习而言，神经网络算是必学的内容了，也试着用tensorflow框架写了一下" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《tensorflow学习笔记（三）——前馈神经网络》 — Vince's Blog&url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/&via=https://github.com/ZT-Vincent/ZT-Vincent.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://github.com/ZT-Vincent/ZT-Vincent.github.io/2017/08/23/tf2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3aQXLjMAwEQP//08kHVvQAIBJnq3lK2ZbE5oFQBny94vF1HJNrq+O1MfDw8PAWpn5+QDKJp3ueZ3W+NloCPDw8vDVe8oDJnpwgn6aYLw0eHh7e3+IlG33vnnh4eHj/H6/3y/O1SQnBw8PD+11eEkacp1gtDPMg43LWgoeHh7fQRfqcv1f6e3h4eHjjrnq1GVb9TW/5CrPFw8PDW+D14tRei6sXK0xiXzw8PLwNXi8gSL5NQtv883N5eLwbHh4e3hpv3sSqfl4NYZsHF/Dw8PAWeJNNOT8KkLemJsXmTX8PDw8P7yrvvFnPe0l5yJtv+uXGGB4eHt5VXhV2K5KYLGLh1RwPDw/vKq8XRkzaZkkJ6RWSa1kLHh4eXsBLItT80EAeScwLwxsFHh4e3gJvEqT2Hlltkt0qY3h4eHi3eBeSjHhUwb3i8Y9DV3h4eHgLvF64MIl9z4Vh/nLfbALi4eHhBbw8Vkg+6X3bo5bPlOHh4eH9CC+JGHoRbXURk6jiceZ4eHh4a7zkgFS+lefTutXuelTg4eHhXeXN21HJ0uQhRX638pkyPDw8vB/kTV6U86kkDbZqvIuHh4e3weuVgerhp/yqSTQchRF4eHh4l3jzIDVv6veOW1VheHh4eNu8eRwwafbnV+Uv2eV1wsPDw7vKyzfoecTQe/keFQY8PDy8AW8Sp+aRRB4Wv1rjTVaNh4eHN+Z9Fcd5I54Etcl0y4ex8PDw8BZ41Q23enRg8op8d5nw8PDw7vKSYjA/eJqXll4H7xGMh4eHt8artrXy2Lf66ny5DYaHh4f3Abxe7FuNLa5FwHh4eHgfyUvYk6ZaskyLhQEPDw9vkHNOmmHVb6sR8CMYDw8Pb4FX/Yc/D1KrjOTO13p6eHh4eB3eN+LSc6jm6htaAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
